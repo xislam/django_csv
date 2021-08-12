@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+    <li>
+        <a href="{% url 'simple_upload' %}">Simple Upload</a>
+    </li>
+</ul>
+
+<p>Uploaded files:</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Код</th>
+        <th scope="col">Наименование</th>
+        <th scope="col">Уровень 1</th>
+        <th scope="col">Уровень 2</th>
+        <th scope="col">Уровень 3</th>
+        <th scope="col">Цена</th>
+        <th scope="col">ЦенаСП</th>
+        <th scope="col">Количество</th>
+        <th scope="col">Поля свойств</th>
+        <th scope="col">Совместныйе покупки</th>
+        <th scope="col">Еденица измерения</th>
+        <th scope="col">Картина</th>
+        <th scope="col">Выводить на главную</th>
+        <th scope="col">Описание</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for obj in documents %}
+    <tr>
+        <th scope="row">{{obj.code}}</th>
+        <td>{{obj.name}}</td>
+        <td>{{obj.level1}}</td>
+        <td>{{obj.level2}}</td>
+        <td>{{obj.level3}}</td>
+        <td>{{obj.price}}</td>
+        <td>{{obj.sp_price}}</td>
+        <td>{{obj.quantity}}</td>
+        <td>{{obj.property_fields}}</td>
+        <td>{{obj.joint_purchases}}</td>
+        <td>{{obj.unit_of_measure}}</td>
+        <td>{{obj.picture}}</td>
+        <td>{{obj.display_on_main_page}}</td>
+        <td>{{obj.description}}</td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}
