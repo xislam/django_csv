@@ -54,11 +54,13 @@ Windows
 3. проведите миграции и запустите проект 
 
     
-    cd source
+        cd source
     
-    ./manage.py migrate
     
-    ./manage.py runserver
+       ./manage.py migrate
+    
+        
+        ./manage.py runserver
 
 если не настроен проект в IDE то вот 
 
