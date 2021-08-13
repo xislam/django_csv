@@ -18,12 +18,12 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from webapp.views import simple_upload, home
+from webapp.views import csv_upload, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('uploads/simple/', simple_upload, name='simple_upload')
+    path('uploads/csv/', csv_upload, name='simple_upload')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

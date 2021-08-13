@@ -14,7 +14,7 @@ def home(request):
     return render(request, 'index.html', {'documents': documents})
 
 
-def simple_upload(request):
+def csv_upload(request):
     if request.method == 'POST' and request.FILES['csv_file']:
         csv_file = request.FILES['csv_file']
         data_set = csv_file.read().decode('UTF-8')
