@@ -20,7 +20,7 @@ def simple_upload(request):
         data_set = csv_file.read().decode('UTF-8')
         io_string = io.StringIO(data_set)
         next(io_string)
-        for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+        for column in csv.reader(io_string, delimiter=';', quotechar="|"):
             _, created = ModelCSV.objects.update_or_create(
                 code=column[0],
                 name=column[1],
@@ -37,9 +37,8 @@ def simple_upload(request):
                 display_on_main_page=column[12],
                 description=column[13],
             )
-        myfile = request.FILES['csv_file']
         fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
+        filename = fs.save(csv_file.name, csv_file)
         uploaded_file_url = fs.url(filename)
         return render(request, 'upload.html', {
             'uploaded_file_url': uploaded_file_url
